@@ -34,7 +34,7 @@ const { t } = useTranslation();
     setMobileOpen(!mobileOpen);
   };
 
-  // 🔥 تابع السكروول
+ 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50); 
