@@ -16,6 +16,8 @@ const Content = () => {
       sx={{
         maxWidth: "972px",
         display: "flex",
+        position:"relative",
+        top:"15px",
         flexDirection: "column",
         gap: { xs: 2, sm: 3, md: 4 },
         px: { xs: 2, sm: 0 },

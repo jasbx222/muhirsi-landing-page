@@ -47,7 +47,7 @@ export default function Future() {
 
         
           <div className="flex-1 max-w-xl text-left px-2 sm:px-0">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
+            <h1 className="text-xl    sm:text-3xl md:text-4xl lg:text-5xl  font-extrabold leading-tight text-gray-900">
               {t("Join us at Muhiris, and")} <br />
               {t("experience the future of social networking and e-commerce today.")}
             </h1>
