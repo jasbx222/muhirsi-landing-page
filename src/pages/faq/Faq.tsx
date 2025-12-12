@@ -57,7 +57,7 @@ export default function FAQ() {
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="py-6 w-full h-[80px] mb-6 border-b border-gray-200 last:mb-0 last:border-none"
+              className="py-6 w-full h-20 mb-6 border-b border-gray-200 last:mb-0 last:border-none"
             >
               <button
                 className="w-full flex items-center justify-between"
