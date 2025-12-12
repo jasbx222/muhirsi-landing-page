@@ -71,7 +71,7 @@ export default function FAQ() {
                 onClick={() => toggleFAQ(index)}
               >
                 <Typography
-                  className={`font-semibold text-[16px] sm:text-[17px]`}
+                  className={`font-semibold text-center ${isRTL ? '  sm:text-right':'sm:text-left'} text-[16px] sm:text-[17px]`}
                   sx={{ flex: 1 }}
                 >
                   {t(item.question)}
