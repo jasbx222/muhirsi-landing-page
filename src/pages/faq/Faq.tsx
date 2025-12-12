@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { faqData } from "./index";
 import { Box, Typography } from "@mui/material";
+import { t } from "i18next";
+import { LanguageContext } from "../../context/LanguageContext";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -9,62 +11,60 @@ export default function FAQ() {
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+ const context = useContext(LanguageContext);
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
+
+  const { language } = context;
 
   return (
     <Box
+    key={language}
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
-        height: "50vh",
-
-        
+        py: { xs: 8, sm: 10, md: 12 },
         position: "relative",
-        top: "120px",
+        top: { xs: "60px", sm: "80px", md: "100px" }, 
       }}
-      className="py-20 bg-white"
+      className="bg-white"
     >
-      <div className="w-full max-w-4xl mx-auto px-4 md:px-6 text-center">
-        <Box
-          sx={{
-            position: "relative",
-            bottom: "12px",
-          }}
-        >
+      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
+      
+        <Box sx={{ mb: 6, textAlign: "center" }}>
           <Typography
             sx={{
-              fontSize: { xs: "18px", sm: "20px", md: "22px" },
+              fontSize: { xs: "20px", sm: "22px", md: "26px" },
               fontWeight: "700",
-              mb: 1,
               letterSpacing: "0.5px",
-              display: "block",
               borderBottom: "2px solid #157EFD",
-              pb: "4px",
+              pb: "6px",
               mx: "auto",
-              width: "150px",
+              width: { xs: "120px", sm: "140px", md: "150px" },
             }}
-            className="text-3xl mb-2 font-bold text-gray-900 tracking-wide"
+            className="text-gray-900"
           >
-            FAQ
+            {t("FAQ")}
           </Typography>
-          <p className="mt-4 text-gray-600 text-sm">
-            Understanding Muhiris: Your Questions Answered
+
+          <p className="mt-3 text-gray-600 text-sm sm:text-base">
+            {t("Understanding Muhiris: Your Questions Answered")}
           </p>
         </Box>
-
-        <div className="mt-12 w-full text-left">
+        <div className="mt-6 w-full text-left">
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="py-6 w-full h-20 mb-6 border-b border-gray-200 last:mb-0 last:border-none"
+              className="py-5 w-full h-20 mb-4 border-b border-gray-200 last:mb-0"
             >
               <button
                 className="w-full flex items-center justify-between"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-gray-900 font-semibold    text-[17px]">
-                  {item.question}
+                <span className="text-gray-900 font-semibold text-[16px] sm:text-[17px]">
+                  {t(item.question)}
                 </span>
 
                 {openIndex === index ? (
@@ -73,9 +73,10 @@ export default function FAQ() {
                   <ChevronDown className="text-[#157EFD]" size={22} />
                 )}
               </button>
+
               {openIndex === index && (
-                <p className="mt-3 text-gray-600 leading-7 text-[15px]">
-                  {item.answer}
+                <p className="mt-3 text-gray-600 leading-7 text-[14px] sm:text-[15px]">
+                  {t(item.answer)}
                 </p>
               )}
             </div>

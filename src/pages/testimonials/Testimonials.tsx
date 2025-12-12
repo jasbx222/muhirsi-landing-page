@@ -21,10 +21,15 @@ export default function Testimonials() {
 
   return (
     <Box key={language} display="flex" justifyContent="center" mt={10}>
-      <Box position="relative" width="90%" borderRadius={3} p={5}>
+      <Box
+        position="relative"
+        width="100%"
+        maxWidth="1200px"
+        borderRadius={3}
+        p={{ xs: 2, sm: 4, md: 5 }}
+      >
         <Box textAlign="center" mb={5}>
           <Typography
-            className="  text-center "
             borderBottom={"2px solid #7FACD6"}
             variant="h5"
             display="inline-block"
@@ -36,21 +41,28 @@ export default function Testimonials() {
             {t("sound_client")}
           </Typography>
         </Box>
+
         <Card
           sx={{
-            display: "flex",
-            justifyContent: "space-around",
-            flexWrap: "wrap",
-            p: 3,
+            display: "grid",
+            gridTemplateColumns: {
+              xs: "1fr",
+              sm: "1fr 1fr",
+              md: "1fr 1fr 1fr",
+            },
+            gap: 3,
+            p: { xs: 2, md: 3 },
             boxShadow: "none",
+            justifyItems: "center",
           }}
         >
           {data.map((item, i) => (
             <CardContent
               key={i}
               sx={{
-                width: 330,
-                height: 360,
+                width: "100%",
+                maxWidth: 330,
+                height: "auto",
                 borderRadius: 3,
                 boxShadow: "0 2px 13px 2px #0000000F",
                 p: 4,
@@ -64,38 +76,23 @@ export default function Testimonials() {
                   height: 70,
                   mx: "auto",
                   mb: 2,
-                  position: "relative",
-                  right: "80px",
                 }}
               />
-              <Typography
-                sx={{
-                  position: "relative",
-                  right: "60px",
-                }}
-                variant="h6"
-                fontWeight="bold"
-              >
+
+              <Typography variant="h6" fontWeight="bold">
                 {t(item.name)}
               </Typography>
+
               <Typography
                 variant="caption"
                 color="#598496"
                 display="block"
                 mb={2}
-                sx={{
-                  position: "relative",
-                  right: "90px",
-                }}
               >
                 {item.date}
               </Typography>
-              <Typography
-                sx={{ position: "relative", right: "30px" }}
-                color="text.secondary"
-              >
-                {t(item.text)}
-              </Typography>
+
+              <Typography color="text.secondary">{t(item.text)}</Typography>
             </CardContent>
           ))}
         </Card>
@@ -104,31 +101,30 @@ export default function Testimonials() {
           sx={{
             position: "absolute",
             top: "50%",
-            left: -20,
-            width: "74px",
-            height: "74px",
-            borderRadius: "74px",
+            left: { xs: 10, md: -20 },
             transform: "translateY(-50%)",
+            display: { xs: "none", md: "flex" },
+            width: 60,
+            height: 60,
             bgcolor: "#E2E2E2",
-            color: "white",
             "&:hover": { bgcolor: "#157EFD" },
           }}
         >
           <StepBack />
         </IconButton>
+
         <IconButton
           sx={{
             position: "absolute",
             top: "50%",
-            width: "74px",
-            height: "74px",
-            borderRadius: "74px",
-            right: -20,
+            right: { xs: 10, md: -20 },
             transform: "translateY(-50%)",
+            display: { xs: "none", md: "flex" },
+            width: 60,
+            height: 60,
             bgcolor: "#157EFD",
             color: "white",
             "&:hover": { bgcolor: "primary.dark" },
-            boxShadow: 3,
           }}
         >
           <StepForward />

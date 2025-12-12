@@ -14,14 +14,17 @@ import { MenuIcon } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { routes } from "./routes";
 import { useTranslation } from "react-i18next";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 
 const Navbar = () => {
-  const { t } = useTranslation();
+  
+const { t } = useTranslation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const isMobile = useMediaQuery("(max-width:1000px)");
   const context = useContext(LanguageContext);
+  const [isScrolled, setIsScrolled] = useState(false);
+
   if (!context)
     throw new Error("LanguageContext must be used within a LanguageProvider");
 
@@ -30,6 +33,16 @@ const Navbar = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  // 🔥 تابع السكروول
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); 
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", width: 250 }}>
@@ -70,10 +83,17 @@ const Navbar = () => {
   );
 
   return (
-    <AppBar
-      position="static"
+     <AppBar
+      position="fixed"
       elevation={0}
-      sx={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E5E7EB" }}
+      sx={{
+        
+        transition: "0.3s ease",
+        backgroundColor: isScrolled ? "rgba(255,255,255,0.7)" : "#fff",
+        backdropFilter: isScrolled ? "blur(10px)" : "none",
+        borderBottom: isScrolled ? "1px solid #E5E7EB" : "none",
+        boxShadow: isScrolled ? "0 2px 10px rgba(0,0,0,0.05)" : "none",
+      }}
     >
       <Toolbar
         sx={{ justifyContent: "space-between", px: { xs: 2, sm: 10 }, py: 2 }}

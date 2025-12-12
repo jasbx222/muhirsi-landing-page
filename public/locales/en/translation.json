@@ -10,4 +10,28 @@
 ,
 "sound_client":"Voices of Muhiris: Hear From Our Satisfied Users",
 "future_text":"Join us at Muhiris, and experience the future of social networking and e-commerce today."
+,"footer_text":"muhiris© 2024. All Rights Reserved.",
+"footer_title":"Muhiris - Connect, Share, Thrive: Your Digital Universe in One App",
+"getApp_title":"Download our app and get the most out of it",
+"getApp_text":"Get Muhiris: Your Gateway to a Vibrant Digital Ecosystem"
+
+,
+  "FAQ": "FAQ",
+  "Understanding Muhiris: Your Questions Answered": "Understanding Muhiris: Your Questions Answered",
+
+  "faq_q1": "What is Muhiris?",
+  "faq_a1": "Muhiris is a mobile application that combines social networking and instant messaging.",
+
+  "faq_q2": "Is my data secure on Muhiris?",
+  "faq_a2": "Yes, Muhiris provides end-to-end encryption and advanced privacy settings.",
+
+  "faq_q3": "How can I monetize my content on Muhiris?",
+  "faq_a3": "You can monetize through subscriptions, direct sales, or premium content.",
+
+  "faq_q4": "Can I control who sees my content?",
+  "faq_a4": "Yes, privacy settings and private groups give you full control.",
+
+  "faq_q5": "Can I use Muhiris on multiple devices?",
+  "faq_a5": "Yes, your account syncs securely across all devices."
+
 }

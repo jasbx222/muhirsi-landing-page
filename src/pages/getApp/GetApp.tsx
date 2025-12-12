@@ -1,9 +1,18 @@
 import { Box, Typography } from "@mui/material";
+import { t } from "i18next";
+import { useContext } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
 
 
 const GetApp = () => {
+    const context = useContext(LanguageContext);
+  if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
+
+  const { language } = context;
+
   return (
     <Box
+    key={language}
       sx={{
         width: "100%",
         py: 10,
@@ -33,7 +42,7 @@ const GetApp = () => {
             mb: 2,
           }}
         >
-          Download our app and get the most out of it
+          {t("getApp_title")}
         </Typography>
 
         <Typography
@@ -43,7 +52,7 @@ const GetApp = () => {
             mb: 4,
           }}
         >
-          Get Muhiris: Your Gateway to a Vibrant Digital Ecosystem
+        {t("getApp_text")}
         </Typography>
 
         <Box

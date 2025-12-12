@@ -1,23 +1,22 @@
 export const faqData = [
   {
-    question: "What is Muhiris?",
-    answer:
-      "Muhiris is a mobile application that combines social networking, instant messaging",
+    question: "faq_q1",
+    answer: "faq_a1",
   },
   {
-    question: "Is my data secure on Muhiris?",
-    answer: "Yes, Muhiris provides end-to-end encryption and advanced privacy settings.",
+    question: "faq_q2",
+    answer: "faq_a2",
   },
   {
-    question: "How can I monetize my content on Muhiris?",
-    answer: "You can monetize through subscriptions, direct sales, or premium content.",
+    question: "faq_q3",
+    answer: "faq_a3",
   },
   {
-    question: "Can I control who sees my content on Muhiris?",
-    answer: "Yes, private groups and visibility settings allow full control.",
+    question: "faq_q4",
+    answer: "faq_a4",
   },
   {
-    question: "Can I use Muhiris on multiple devices?",
-    answer: "Yes, your account syncs securely across devices.",
+    question: "faq_q5",
+    answer: "faq_a5",
   },
 ];

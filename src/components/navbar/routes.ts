@@ -6,7 +6,7 @@ export const routes=[
 },
     {
     id:2,
-    title:"Service",
+    title:"Services",
 
 },
     {
