@@ -18,9 +18,15 @@ export default function Testimonials() {
     throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
-
+  const isRTL = language === "ar"; 
   return (
-    <Box key={language} display="flex" justifyContent="center" mt={10}>
+    <Box
+      key={language}
+      display="flex"
+      justifyContent="center"
+      mt={{ xs: 6, sm: 10 }}
+      px={{ xs: 2, sm: 4 }}
+    >
       <Box
         position="relative"
         width="100%"
@@ -28,6 +34,7 @@ export default function Testimonials() {
         borderRadius={3}
         p={{ xs: 2, sm: 4, md: 5 }}
       >
+        {/* Title */}
         <Box textAlign="center" mb={5}>
           <Typography
             borderBottom={"2px solid #7FACD6"}
@@ -42,6 +49,7 @@ export default function Testimonials() {
           </Typography>
         </Box>
 
+        {/* Cards */}
         <Card
           sx={{
             display: "grid",
@@ -54,6 +62,7 @@ export default function Testimonials() {
             p: { xs: 2, md: 3 },
             boxShadow: "none",
             justifyItems: "center",
+            direction: isRTL ? "rtl" : "ltr", 
           }}
         >
           {data.map((item, i) => (
@@ -97,11 +106,13 @@ export default function Testimonials() {
           ))}
         </Card>
 
+        {/* Navigation Buttons */}
         <IconButton
           sx={{
             position: "absolute",
             top: "50%",
-            left: { xs: 10, md: -20 },
+            left: isRTL ? "auto" : { xs: 10, md: -20 },
+            right: isRTL ? { xs: 10, md: -20 } : "auto",
             transform: "translateY(-50%)",
             display: { xs: "none", md: "flex" },
             width: 60,
@@ -117,7 +128,8 @@ export default function Testimonials() {
           sx={{
             position: "absolute",
             top: "50%",
-            right: { xs: 10, md: -20 },
+            right: isRTL ? "auto" : { xs: 10, md: -20 },
+            left: isRTL ? { xs: 10, md: -20 } : "auto",
             transform: "translateY(-50%)",
             display: { xs: "none", md: "flex" },
             width: 60,

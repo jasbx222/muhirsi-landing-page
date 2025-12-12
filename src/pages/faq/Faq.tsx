@@ -11,28 +11,32 @@ export default function FAQ() {
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
- const context = useContext(LanguageContext);
+
+  const context = useContext(LanguageContext);
   if (!context)
     throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
+  const isRTL = language === "ar"; 
 
   return (
     <Box
-    key={language}
+      key={language}
       sx={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
         py: { xs: 8, sm: 10, md: 12 },
+        px: { xs: 2, sm: 4 },
         position: "relative",
-        top: { xs: "60px", sm: "80px", md: "100px" }, 
+        top: { xs: "60px", sm: "80px", md: "100px" },
+        direction: isRTL ? "rtl" : "ltr",
       }}
       className="bg-white"
     >
-      <div className="w-full max-w-4xl mx-auto px-4 sm:px-6">
-      
+      <div className="w-full max-w-4xl mx-auto">
+        {/* Title */}
         <Box sx={{ mb: 6, textAlign: "center" }}>
           <Typography
             sx={{
@@ -53,17 +57,23 @@ export default function FAQ() {
             {t("Understanding Muhiris: Your Questions Answered")}
           </p>
         </Box>
-        <div className="mt-6 w-full text-center  sm:text-left">
+
+        {/* FAQ Items */}
+        <div className="mt-6 w-full">
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="py-5  text-center sm:text-left w-full h-20 mb-4 border-b border-gray-200 last:mb-0"
+              className="py-5 h-20 w-full mb-4 border-b border-gray-200 last:mb-0"
+              style={{ textAlign: isRTL ? "right" : "left" }}
             >
               <button
-                className="w-full  flex items-center justify-between"
+                className={`w-full flex items-center justify-between`}
                 onClick={() => toggleFAQ(index)}
               >
-                <Typography className="text-gray-900  relative left-12 sm:left-0 text-center  font-semibold text-[16px] sm:text-[17px]">
+                <Typography
+                  className={`font-semibold text-[16px] sm:text-[17px]`}
+                  sx={{ flex: 1 }}
+                >
                   {t(item.question)}
                 </Typography>
 
@@ -75,7 +85,10 @@ export default function FAQ() {
               </button>
 
               {openIndex === index && (
-                <p className="mt-3 text-gray-600 leading-7 text-[14px] sm:text-[15px]">
+                <p
+                  className="mt-3 text-gray-600 leading-7 text-[14px] sm:text-[15px]"
+                  style={{ textAlign: isRTL ? "right" : "left" }}
+                >
                   {t(item.answer)}
                 </p>
               )}

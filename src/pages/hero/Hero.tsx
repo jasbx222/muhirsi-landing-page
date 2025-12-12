@@ -1,7 +1,16 @@
 import { Grid, Box } from "@mui/material";
 import Content from "./Content";
 import Image from "./Image";
+import { useContext } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
+
 const Hero = () => {
+  const context = useContext(LanguageContext);
+  if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
+
+  const { language } = context;
+  const isRTL = language === "ar";
+
   return (
     <>
       <Grid
@@ -12,42 +21,46 @@ const Hero = () => {
           zIndex: -10,
           px: { xs: 2, sm: 4, md: 6 },
           py: { xs: 4, sm: 6, md: 8 },
+          direction: isRTL ? "rtl" : "ltr", 
         }}
         alignItems="center"
         justifyContent="center"
         spacing={4}
       >
+        {/* Content */}
         <Grid
           sx={{
             display: "flex",
             flexDirection: "column",
-            alignItems: { xs: "center", md: "flex-start" },
-            textAlign: { xs: "center", md: "left" },
+            alignItems: { xs: "center", md: isRTL ? "flex-end" : "flex-start" },
+            textAlign: { xs: "center", md: isRTL ? "right" : "left" },
           }}
         >
           <Content />
         </Grid>
+
+        {/* Image */}
         <Grid
           sx={{
             display: "flex",
-            justifyContent: { xs: "center", md: "flex-end" },
+            justifyContent: { xs: "center", md: isRTL ? "flex-start" : "flex-end" },
           }}
         >
           <Image />
         </Grid>
       </Grid>
+
+      {/* Decorative Vector */}
       <Box sx={{ mt: 2, width: "100%" }} display={{ xs: "none", sm: "block" }}>
         <Box
           sx={{
             width: "100%",
             height: "auto",
-            
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             position: "absolute",
-            bottom: "-80px",
-            // right:"20px",
+            bottom: "-110px",
             overflow: "hidden",
             zIndex: 2,
           }}
