@@ -18,7 +18,7 @@ const GetApp = () => {
         backgroundColor: "#f9f9f9",
       }}
     >
-      {/* TEXT + BUTTON SECTION */}
+      
       <Box
         sx={{
           maxWidth: "629px",
@@ -46,7 +46,6 @@ const GetApp = () => {
           Get Muhiris: Your Gateway to a Vibrant Digital Ecosystem
         </Typography>
 
-        {/* BUTTONS */}
         <Box
           sx={{
             display: "flex",
@@ -60,8 +59,6 @@ const GetApp = () => {
        
         </Box>
       </Box>
-
-      {/* IMAGE SECTION */}
       <Box
         sx={{
           display: "flex",

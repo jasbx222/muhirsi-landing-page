@@ -4,13 +4,7 @@
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" },
     {
-  "compilerOptions": {
-    "noEmitOnError": false,
-    "strict": false,
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
-    "suppressImplicitAnyIndexErrors": true
-  }
+  
 }
 
   ]

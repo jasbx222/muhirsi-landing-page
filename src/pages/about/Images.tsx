@@ -5,7 +5,8 @@ import { LanguageContext } from "../../context/LanguageContext";
 
 const Images = () => {
   const context = useContext(LanguageContext);
-  if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
 
@@ -19,11 +20,9 @@ const Images = () => {
         justifyContent: "center",
         alignItems: "center",
         mt: { xs: 8, md: 0 },
-        pb: { xs: 10, sm: 12, md: 0 }, // space for card on mobile
+        pb: { xs: 10, sm: 12, md: 0 },
       }}
     >
-
-      {/* BLOB Background */}
       <Box
         sx={{
           position: "absolute",
@@ -40,8 +39,6 @@ const Images = () => {
           zIndex: 1,
         }}
       />
-
-      {/* Main Mobile Image */}
       <img
         src="/mobile2.png"
         style={{
@@ -51,9 +48,8 @@ const Images = () => {
           zIndex: 5,
           position: "relative",
         }}
+        alt="about"
       />
-
-      {/* CONNECT CARD */}
       <Box
         sx={{
           position: "absolute",
@@ -74,12 +70,10 @@ const Images = () => {
           minWidth: { xs: "180px", sm: "200px" },
         }}
       >
-
-        <Box sx={{ display: "flex" , }}  >
+        <Box sx={{ display: "flex" }}>
           {["user1.png", "user2.png", "user3.png"].map((u, i) => (
             <img
-     className="hidden sm:block"
-
+              className="hidden sm:block"
               key={i}
               src={`/${u}`}
               style={{
@@ -89,11 +83,11 @@ const Images = () => {
                 border: "2px solid #fff",
                 marginRight: i !== 2 ? "-10px" : "0px",
               }}
+              alt="about-users"
             />
           ))}
         </Box>
 
-        {/* Text */}
         <Typography
           sx={{
             color: "#fff",
@@ -104,9 +98,7 @@ const Images = () => {
         >
           {t("contact")}
         </Typography>
-
       </Box>
-
     </Box>
   );
 };
