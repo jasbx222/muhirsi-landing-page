@@ -19,15 +19,18 @@ export default function Future() {
       }}
     >
       <div className="container mx-auto px-4 sm:px-8 lg:px-20">
-        <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-12 lg:gap-24">
-          <div className="relative w-56 sm:w-72 md:w-80 lg:w-96 flex justify-center">
-            <div className="absolute left-[230px] -top-12 w-24 h-24 opacity-30">
+        <div className="flex flex-col-reverse lg:flex-row flex-wrap justify-between items-center gap-12 lg:gap-24">
+     
+          <div className="relative w-full sm:w-72 md:w-80 lg:w-96 flex justify-center">
+           
+            <div className="absolute left-1/2 sm:left-[60%] md:left-[230px] -top-12 w-16 sm:w-20 h-16 sm:h-20 opacity-30">
+              <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
+            </div>
+            <div className="absolute right-1/2 sm:right-[60%] md:right-[300px] -bottom-6 w-16 sm:w-20 h-16 sm:h-20 opacity-20">
               <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
             </div>
 
-            <div className="absolute right-[300px] -bottom-6 w-24 h-24 opacity-20">
-              <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
-            </div>
+       
             <div
               className="relative rounded-3xl overflow-hidden shadow-2xl"
               style={{ borderRadius: 28 }}
@@ -36,23 +39,24 @@ export default function Future() {
                 <img
                   src="/future.png"
                   alt="phone"
-                  className="w-full h-auto object-contain"
+                  className="w-full h-auto max-w-full object-contain"
                 />
               </div>
             </div>
           </div>
 
+        
           <div className="flex-1 max-w-xl text-left px-2 sm:px-0">
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
-              Join us at Muhiris, and <br />
-              experience the future of social networking and e-commerce today.
+              {t("Join us at Muhiris, and")} <br />
+              {t("experience the future of social networking and e-commerce today.")}
             </h1>
 
             <p className="mt-5 text-gray-600 leading-relaxed text-sm sm:text-base">
               {t("future_text")}
             </p>
 
-            <div className="mt-8  relative top-5 flex  flex-col sm:flex-row items-center gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
               <Button
                 variant="contained"
                 sx={{
@@ -60,7 +64,7 @@ export default function Future() {
                   background: "linear-gradient(90deg,#6f3cff,#7a3bff)",
                   boxShadow: "0 8px 24px rgba(111,60,255,0.18)",
                   borderRadius: "999px",
-                  paddingX: 3,
+                  paddingX: { xs: 2, sm: 3 },
                   paddingY: 1.2,
                   fontWeight: 700,
                   width: "100%",
@@ -74,7 +78,7 @@ export default function Future() {
                 sx={{
                   textTransform: "none",
                   borderRadius: "999px",
-                  paddingX: 3,
+                  paddingX: { xs: 2, sm: 3 },
                   paddingY: 1.05,
                   borderColor: "#e6e6e6",
                   color: "#333",

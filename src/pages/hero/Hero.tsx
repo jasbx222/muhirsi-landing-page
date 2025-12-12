@@ -41,11 +41,12 @@ const Hero = () => {
           sx={{
             width: "100%",
             height: "auto",
+            
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             position: "absolute",
-            bottom: "-150px",
+            bottom: "-80px",
             // right:"20px",
             overflow: "hidden",
             zIndex: 2,
