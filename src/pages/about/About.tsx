@@ -4,8 +4,9 @@ import Images from "./Images";
 import Title from "./Title";
 
 const About = () => {
+  
   return (
-    <Container  >
+    <Container   >
       <Box
         sx={{
           position: "relative",

@@ -1,7 +1,6 @@
 import { Grid, Box } from "@mui/material";
 import Content from "./Content";
 import Image from "./Image";
-import VectorOne from "../../components/ui/VectorOne";
 const Hero = () => {
   return (
     <>
@@ -38,7 +37,30 @@ const Hero = () => {
         </Grid>
       </Grid>
       <Box sx={{ mt: 2, width: "100%" }} display={{ xs: "none", sm: "block" }}>
-        <VectorOne />
+        <Box
+          sx={{
+            width: "100%",
+            height: "auto",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            position: "absolute",
+            bottom: "-150px",
+            // right:"20px",
+            overflow: "hidden",
+            zIndex: 2,
+          }}
+        >
+          <img
+            src="/VectorOne.png"
+            alt="VectorOne"
+            style={{
+              width: "100%",
+              height: "auto",
+              display: "block",
+            }}
+          />
+        </Box>
       </Box>
     </>
   );

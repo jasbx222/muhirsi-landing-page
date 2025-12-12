@@ -13,28 +13,27 @@ import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 
 export default function Testimonials() {
-      const context = useContext(LanguageContext);
-      if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
-    
-      const { language } = context;
-    
-  
+  const context = useContext(LanguageContext);
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
+
+  const { language } = context;
 
   return (
-    <Box  key={language} display="flex" justifyContent="center" mt={10}>
+    <Box key={language} display="flex" justifyContent="center" mt={10}>
       <Box position="relative" width="90%" borderRadius={3} p={5}>
         <Box textAlign="center" mb={5}>
           <Typography
             className="  text-center "
             borderBottom={"2px solid #7FACD6"}
             variant="h5"
-              display="inline-block"
+            display="inline-block"
             fontWeight="600"
           >
             {t("TESTIMONIALS")}
           </Typography>
-          <Typography  mt={2} variant="body2" color="text.secondary">
-         {t("sound_client")}
+          <Typography mt={2} variant="body2" color="text.secondary">
+            {t("sound_client")}
           </Typography>
         </Box>
         <Card

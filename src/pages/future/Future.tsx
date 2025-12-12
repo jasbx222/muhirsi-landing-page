@@ -1,0 +1,93 @@
+import { Box, Button } from "@mui/material";
+import { useContext } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
+import { t } from "i18next";
+
+export default function Future() {
+  const context = useContext(LanguageContext);
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
+
+  const { language } = context;
+
+  return (
+    <Box
+      key={language}
+      className="w-full min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat py-12"
+      style={{
+        backgroundImage: `url('/bg-future.png')`,
+      }}
+    >
+      <div className="container mx-auto px-4 sm:px-8 lg:px-20">
+        <div className="flex flex-col-reverse lg:flex-row justify-between items-center gap-12 lg:gap-24">
+          <div className="relative w-56 sm:w-72 md:w-80 lg:w-96 flex justify-center">
+            <div className="absolute left-[230px] -top-12 w-24 h-24 opacity-30">
+              <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
+            </div>
+
+            <div className="absolute right-[300px] -bottom-6 w-24 h-24 opacity-20">
+              <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
+            </div>
+            <div
+              className="relative rounded-3xl overflow-hidden shadow-2xl"
+              style={{ borderRadius: 28 }}
+            >
+              <div className="p-4 sm:p-6" style={{ borderRadius: 28 }}>
+                <img
+                  src="/future.png"
+                  alt="phone"
+                  className="w-full h-auto object-contain"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 max-w-xl text-left px-2 sm:px-0">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-gray-900">
+              Join us at Muhiris, and <br />
+              experience the future of social networking and e-commerce today.
+            </h1>
+
+            <p className="mt-5 text-gray-600 leading-relaxed text-sm sm:text-base">
+              {t("future_text")}
+            </p>
+
+            <div className="mt-8  relative top-5 flex  flex-col sm:flex-row items-center gap-4">
+              <Button
+                variant="contained"
+                sx={{
+                  textTransform: "none",
+                  background: "linear-gradient(90deg,#6f3cff,#7a3bff)",
+                  boxShadow: "0 8px 24px rgba(111,60,255,0.18)",
+                  borderRadius: "999px",
+                  paddingX: 3,
+                  paddingY: 1.2,
+                  fontWeight: 700,
+                  width: "100%",
+                }}
+              >
+                {t("Download")}
+              </Button>
+
+              <Button
+                variant="outlined"
+                sx={{
+                  textTransform: "none",
+                  borderRadius: "999px",
+                  paddingX: 3,
+                  paddingY: 1.05,
+                  borderColor: "#e6e6e6",
+                  color: "#333",
+                  fontWeight: 600,
+                  width: "100%",
+                }}
+              >
+                {t("Know More")}
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Box>
+  );
+}

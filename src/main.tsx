@@ -7,6 +7,7 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext.tsx";
 import Navbar from "./components/navbar/Navbar.tsx";
+// import Footer from "./components/footer/Footer.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
       <LanguageProvider>
         <Navbar />
         <App />
+        {/* <Footer/> */}
       </LanguageProvider>
     </BrowserRouter>
   </StrictMode>

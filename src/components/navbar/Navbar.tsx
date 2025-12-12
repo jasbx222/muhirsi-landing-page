@@ -78,19 +78,16 @@ const Navbar = () => {
       <Toolbar
         sx={{ justifyContent: "space-between", px: { xs: 2, sm: 10 }, py: 2 }}
       >
-        {/* LEFT: Logo */}
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <img src="/Logo.png" alt="logo" style={{ width: 180, height: 50 }} />
         </Box>
 
-        {/* MOBILE MENU BUTTON */}
         {isMobile && (
           <IconButton color="inherit" edge="start" onClick={handleDrawerToggle}>
             <MenuIcon color="#157EFD" />
           </IconButton>
         )}
 
-        {/* CENTER: Desktop Links */}
         {!isMobile && (
           <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
             {routes.map((item) => (
@@ -105,7 +102,6 @@ const Navbar = () => {
           </Box>
         )}
 
-        {/* RIGHT: Desktop Buttons */}
         {!isMobile && (
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <NavLink
