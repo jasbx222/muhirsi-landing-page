@@ -47,18 +47,19 @@ export default function Future() {
 
         
           <div className="flex-1 max-w-xl text-left px-2 sm:px-0">
-            <h1 className="text-xl    sm:text-3xl md:text-4xl lg:text-5xl  font-extrabold leading-tight text-gray-900">
+             <h1 className="text-xl text-center sm:text-left    sm:text-3xl md:text-4xl lg:text-5xl  font-extrabold leading-tight text-gray-900">
               {t("Join us at Muhiris, and")} <br />
               {t("experience the future of social networking and e-commerce today.")}
             </h1>
 
-            <p className="mt-5 text-gray-600 leading-relaxed text-sm sm:text-base">
+            <p className="mt-8 text-center sm:text-left relative top-4 text-gray-600 leading-relaxed text-sm sm:text-base">
               {t("future_text")}
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center gap-4">
+            <div className="mt-8 flex relative top-8 flex-col sm:flex-row items-center gap-4">
               <Button
                 variant="contained"
+                className="w-[200px] sm:w-full"
                 sx={{
                   textTransform: "none",
                   background: "linear-gradient(90deg,#6f3cff,#7a3bff)",
@@ -67,7 +68,7 @@ export default function Future() {
                   paddingX: { xs: 2, sm: 3 },
                   paddingY: 1.2,
                   fontWeight: 700,
-                  width: "100%",
+                  // width: "100%",
                 }}
               >
                 {t("Download")}
@@ -75,6 +76,7 @@ export default function Future() {
 
               <Button
                 variant="outlined"
+                   className="w-[200px] sm:w-full"
                 sx={{
                   textTransform: "none",
                   borderRadius: "999px",
@@ -83,7 +85,7 @@ export default function Future() {
                   borderColor: "#e6e6e6",
                   color: "#333",
                   fontWeight: 600,
-                  width: "100%",
+                  // width: "100%",
                 }}
               >
                 {t("Know More")}

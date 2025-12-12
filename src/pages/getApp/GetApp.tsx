@@ -77,8 +77,9 @@ const GetApp = () => {
         <img
           src="/getApp.png"
           alt="Get App"
+          className="sm:w-full w-[200px]"
           style={{
-            width: "100%",
+      
             maxWidth: "420px",
             height: "auto",
             objectFit: "contain",

@@ -53,19 +53,19 @@ export default function FAQ() {
             {t("Understanding Muhiris: Your Questions Answered")}
           </p>
         </Box>
-        <div className="mt-6 w-full text-left">
+        <div className="mt-6 w-full text-center  sm:text-left">
           {faqData.map((item, index) => (
             <div
               key={index}
-              className="py-5 w-full h-20 mb-4 border-b border-gray-200 last:mb-0"
+              className="py-5  text-center sm:text-left w-full h-20 mb-4 border-b border-gray-200 last:mb-0"
             >
               <button
-                className="w-full flex items-center justify-between"
+                className="w-full  flex items-center justify-between"
                 onClick={() => toggleFAQ(index)}
               >
-                <span className="text-gray-900 font-semibold text-[16px] sm:text-[17px]">
+                <Typography className="text-gray-900  relative left-12 sm:left-0 text-center  font-semibold text-[16px] sm:text-[17px]">
                   {t(item.question)}
-                </span>
+                </Typography>
 
                 {openIndex === index ? (
                   <ChevronUp className="text-[#157EFD]" size={22} />
