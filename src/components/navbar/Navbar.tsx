@@ -1,0 +1,171 @@
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+} from "@mui/material";
+import { MenuIcon } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import { routes } from "./routes";
+import { useTranslation } from "react-i18next";
+import { useContext, useState } from "react";
+import { LanguageContext } from "../../context/LanguageContext";
+
+const Navbar = () => {
+  const { t } = useTranslation();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width:1000px)");
+  const context = useContext(LanguageContext);
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
+
+  const { language, toggleLanguage } = context;
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", width: 250 }}>
+      <List>
+        {routes.map((item) => (
+          <ListItem key={item.id} disablePadding>
+            <ListItemText>
+              <NavLink
+                to={item.title}
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  display: "block",
+                  padding: "10px 0",
+                }}
+              >
+                {t(item.title)}
+              </NavLink>
+            </ListItemText>
+          </ListItem>
+        ))}
+        <ListItem disablePadding>
+          <Button variant="contained" sx={{ margin: "10px 0", width: "100%" }}>
+            {t("Get Started")}
+          </Button>
+        </ListItem>
+        <ListItem disablePadding>
+          <Button
+            variant="outlined"
+            sx={{ margin: "10px 0", width: "100%" }}
+            onClick={toggleLanguage}
+          >
+            {language === "en" ? "AR" : "EN"}
+          </Button>
+        </ListItem>
+      </List>
+    </Box>
+  );
+
+  return (
+    <AppBar
+      position="static"
+      elevation={0}
+      sx={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E5E7EB" }}
+    >
+      <Toolbar
+        sx={{ justifyContent: "space-between", px: { xs: 2, sm: 10 }, py: 2 }}
+      >
+        {/* LEFT: Logo */}
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <img src="/Logo.png" alt="logo" style={{ width: 180, height: 50 }} />
+        </Box>
+
+        {/* MOBILE MENU BUTTON */}
+        {isMobile && (
+          <IconButton color="inherit" edge="start" onClick={handleDrawerToggle}>
+            <MenuIcon color="#157EFD" />
+          </IconButton>
+        )}
+
+        {/* CENTER: Desktop Links */}
+        {!isMobile && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
+            {routes.map((item) => (
+              <NavLink
+                key={item.id}
+                to={item.title}
+                style={{ textDecoration: "none", color: "black" }}
+              >
+                {t(item.title)}
+              </NavLink>
+            ))}
+          </Box>
+        )}
+
+        {/* RIGHT: Desktop Buttons */}
+        {!isMobile && (
+          <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+            <NavLink
+              to={"/"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              {t("Login")}
+            </NavLink>
+            <Button
+              variant="contained"
+              sx={{
+                backgroundColor: "#6334FC",
+                textTransform: "none",
+                borderRadius: "50px",
+                width: 142,
+                padding: "10px 30px",
+                fontSize: 14,
+                "&:hover": { backgroundColor: "#552be3" },
+              }}
+            >
+              {t("Get Started")}
+            </Button>
+            <Button
+              variant="outlined"
+              sx={{
+                textTransform: "none",
+                borderRadius: "50px",
+                fontSize: 14,
+                padding: "10px 20px",
+              }}
+              onClick={toggleLanguage}
+            >
+              {language === "en" ? "AR" : "EN"}
+            </Button>
+          </Box>
+        )}
+
+        <Drawer
+          anchor="right"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          PaperProps={{
+            sx: {
+              width: 300,
+              alignItems: "center",
+              backgroundColor: "#ffffffcc",
+              backdropFilter: "blur(5px)",
+            },
+          }}
+          ModalProps={{
+            sx: {
+              backgroundColor: "rgba(0,0,0,0.3)",
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default Navbar;
