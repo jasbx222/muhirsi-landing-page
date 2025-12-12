@@ -1,4 +1,5 @@
 
+import { Box } from "@mui/material";
 import "./App.css";
 import { Footer } from "./components/footer/Footer";
 import About from "./pages/about/About";
@@ -10,7 +11,7 @@ import Testimonials from "./pages/testimonials/Testimonials";
 
 function App() {
   return (
-    <>
+    <Box>
       
       <Hero />
       <About />
@@ -19,7 +20,7 @@ function App() {
       <FAQ/>
       <GetApp/>
       <Footer/>
-    </>
+    </Box>
   );
 }
 
