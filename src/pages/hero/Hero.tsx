@@ -15,12 +15,13 @@ const Hero = () => {
   const isRTL = language === "ar";
   useEffect(() => {
   gsap.to("#img-hero", {
-    y: 100,            
+    y: 50,            
     opacity: 0,
     duration: 1.5,
+    ease: "power1.out",
     scrollTrigger: {
-      trigger: "#img",  
-      start: "top 1%", 
+      trigger: "#img-hero",  
+      start: "top 70%", 
       end: "bottom 20%", 
       scrub: true       
     }

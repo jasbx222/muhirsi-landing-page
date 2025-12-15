@@ -1,14 +1,42 @@
 import { Box, Button } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import { t } from "i18next";
-
+import {gsap } from 'gsap'
+import {ScrollTrigger } from 'gsap/ScrollTrigger'
 export default function Future() {
+  gsap.registerPlugin(ScrollTrigger)
   const context = useContext(LanguageContext);
   if (!context)
     throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
+
+  useEffect(()=>{
+
+    gsap.to("#img-future ",{
+      x:-300,
+      opacity:0,
+      scrollTrigger:{
+        trigger:"#img-future ",
+        start:"top 40%",
+        end:"bottom 20%",
+        scrub:true
+      }
+    })
+    gsap.to("#text-future",{
+      x:300,
+      opacity:0,
+      scrollTrigger:{
+        trigger:"#text-future ",
+        start:"top 40%",
+        end:"bottom 20%",
+        scrub:true
+      }
+    })
+
+   
+  })
 
   return (
     <Box
@@ -21,7 +49,7 @@ export default function Future() {
       <div className="container mx-auto px-4 sm:px-8 lg:px-20">
         <div className="flex flex-col-reverse lg:flex-row flex-wrap justify-between items-center gap-12 lg:gap-24">
      
-          <div className="relative w-full sm:w-72 md:w-80 lg:w-96 flex justify-center">
+          <div id='img-future' className="relative w-full sm:w-72 md:w-80 lg:w-96 flex justify-center">
            
             <div className="absolute left-1/2 sm:left-[60%] md:left-[230px] -top-12 w-16 sm:w-20 h-16 sm:h-20 opacity-30">
               <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
@@ -46,7 +74,7 @@ export default function Future() {
           </div>
 
         
-          <div className="flex-1 max-w-xl text-left px-2 sm:px-0">
+          <div id="text-future" className="flex-1 max-w-xl text-left px-2 sm:px-0">
              <h1 className="text-xl text-center sm:text-left    sm:text-3xl md:text-4xl lg:text-5xl  font-extrabold leading-tight text-gray-900">
               {t("Join us at Muhiris, and")} <br />
               {t("experience the future of social networking and e-commerce today.")}

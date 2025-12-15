@@ -21,8 +21,8 @@ const Content = () => {
       y: 20,
       opacity: 0,
       stagger: 0.1,
-      duration: 0.6,
-      scrub: true    ,
+      duration: 2,
+      repeat: -1    ,
     });
   }, []);
   return (
