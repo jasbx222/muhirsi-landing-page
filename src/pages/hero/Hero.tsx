@@ -1,16 +1,31 @@
 import { Grid, Box } from "@mui/material";
 import Content from "./Content";
 import Image from "./Image";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
+import {gsap} from 'gsap'
 const Hero = () => {
   const context = useContext(LanguageContext);
   if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
   const isRTL = language === "ar";
-
+  useEffect(() => {
+  gsap.to("#img-hero", {
+    y: 100,            
+    opacity: 0,
+    duration: 1.5,
+    scrollTrigger: {
+      trigger: "#img",  
+      start: "top 1%", 
+      end: "bottom 20%", 
+      scrub: true       
+    }
+  });
+}, []);
   return (
     <>
       <Grid
@@ -53,6 +68,7 @@ const Hero = () => {
       {/* Decorative Vector */}
       <Box sx={{ mt: 2, width: "100%" }} display={{ xs: "none", sm: "block" }}>
         <Box
+        
           sx={{
             width: "100%",
             height: "auto",
@@ -66,6 +82,7 @@ const Hero = () => {
           }}
         >
           <img
+          id="img-hero"
             src="/VectorOne.png"
             alt="VectorOne"
             style={{

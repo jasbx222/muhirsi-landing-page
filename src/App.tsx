@@ -1,7 +1,7 @@
 
 import { Box } from "@mui/material";
 import "./App.css";
-import { Footer } from "./components/footer/Footer";
+// import { Footer } from "./components/footer/Footer";
 import About from "./pages/about/About";
 import FAQ from "./pages/faq/Faq";
 import Future from "./pages/future/Future";
@@ -11,7 +11,9 @@ import Testimonials from "./pages/testimonials/Testimonials";
 
 function App() {
   return (
-    <Box>
+    <Box sx={{
+       overflow:"hidden",
+    }}>
       
       <Hero />
       <About />
@@ -19,7 +21,7 @@ function App() {
       <Future/>
       <FAQ/>
       <GetApp/>
-      <Footer/>
+  
     </Box>
   );
 }

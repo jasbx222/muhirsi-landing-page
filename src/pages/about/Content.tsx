@@ -1,20 +1,39 @@
 import { Box, Button, Typography } from "@mui/material";
 import { t } from "i18next";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
+import {gsap} from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Content = () => {
     const context = useContext(LanguageContext);
   if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
 
+gsap.registerPlugin(ScrollTrigger);
   const { language } = context;
-
+useEffect(()=>{
+  gsap.to("#content",{
+  x:-300,
+  opacity:0,
+  scrollTrigger:{
+    trigger:"#content",
+    start:"top 40%",
+    end:"bottom 20%",
+    scrub:true
+  }
+})
+},[])
   return (
-    <Box
-      sx={{
-        width: { xs: "100%", md: "45%" },
+
+     <div
+
+     id="content"
+      style={{
+        width: '100%',
         textAlign: "center",
-        mx: "auto",
+        marginRight: "auto",
+        position:"relative",
+      
       }}
 
       key={language}
@@ -84,7 +103,8 @@ const Content = () => {
          {t("Know More")}
         </Button>
       </Box>
-    </Box>
+    </div>
+
   );
 };
 

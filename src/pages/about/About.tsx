@@ -15,16 +15,20 @@ const About = () => {
   return (
     <Container>
       {/* Title Section */}
-      <Box
-        sx={{
+      <div id="title">
+        <Box
+       sx={{
           position: "relative",
           top: "40px",
           zIndex: 5,
           textAlign: isRTL ? "right" : "left",
         }}
+      
+    
       >
         <Title />
       </Box>
+      </div>
 
       {/* Content + Images Section */}
       <Box

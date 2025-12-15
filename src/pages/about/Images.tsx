@@ -1,26 +1,42 @@
 import { Box, Typography } from "@mui/material";
 import { t } from "i18next";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
+import {gsap} from 'gsap'
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Images = () => {
   const context = useContext(LanguageContext);
   if (!context)
     throw new Error("LanguageContext must be used within a LanguageProvider");
-
+gsap.registerPlugin(ScrollTrigger);
   const { language } = context;
-
+useEffect(()=>{
+  gsap.to("#image-about",{
+  x:300,
+  opacity:0,
+    
+  scrollTrigger:{
+    trigger:"#image-about",
+    start:"top 40%",
+    end:"bottom 20%",
+    scrub: true    ,
+  }
+})
+},[])
   return (
-    <Box
+    <div
+    id="image-about"
       key={language}
-      sx={{
-        width: { xs: "100%", md: "50%" },
+      style={{
+        width: "100%",
         position: "relative",
         display: "flex",
+       
         justifyContent: "center",
         alignItems: "center",
-        mt: { xs: 8, md: 0 },
-        pb: { xs: 10, sm: 12, md: 0 },
+        marginTop:  8,
+        paddingBottom:  10,
       }}
     >
       <Box
@@ -99,7 +115,7 @@ const Images = () => {
           {t("contact")}
         </Typography>
       </Box>
-    </Box>
+    </div>
   );
 };
 

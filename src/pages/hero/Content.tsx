@@ -1,15 +1,30 @@
 import { Grid, Typography } from "@mui/material";
 import Buttons from "./Buttons";
 import { t } from "i18next";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
-
+import { gsap } from "gsap";
+import SplitText from "gsap/SplitText";
 const Content = () => {
   const context = useContext(LanguageContext);
-  if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
 
+  gsap.registerPlugin(SplitText);
+
+  useEffect(() => {
+    const split = new SplitText(".word", { type: "words" });
+
+    gsap.from(split.words, {
+      y: 20,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.6,
+      scrub: true    ,
+    });
+  }, []);
   return (
     <Grid
       key={language}
@@ -26,7 +41,7 @@ const Content = () => {
     >
       <Typography
         variant="h2"
-        className=" relative top-2 sm:top-0"
+        className="relative top-2 sm:top-0"
         sx={{
           fontFamily: "Raleway",
           fontWeight: 900,
@@ -37,7 +52,20 @@ const Content = () => {
           textAlign: { xs: "center", md: "left" },
         }}
       >
-        {t("home_title")}
+        {t("home_title")
+          .split(" ")
+          .map((word, index) => (
+            <span
+              key={index}
+              className="word"
+              style={{
+                display: "inline-block",
+                marginInlineEnd: "8px",
+              }}
+            >
+              {word}
+            </span>
+          ))}
       </Typography>
 
       <Typography
@@ -55,7 +83,9 @@ const Content = () => {
         {t("home_desc")}
       </Typography>
 
-      <Grid  sx={{ mt: { xs: 3, sm: 4, md: 6 }, width: "100%", maxWidth: "400px" }}>
+      <Grid
+        sx={{ mt: { xs: 3, sm: 4, md: 6 }, width: "100%", maxWidth: "400px" }}
+      >
         <Buttons />
       </Grid>
     </Grid>
