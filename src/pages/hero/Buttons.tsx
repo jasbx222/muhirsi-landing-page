@@ -13,7 +13,7 @@ const Buttons = () => {
       key={language}
       sx={{
         display: "flex",
-        flexDirection: { xs: "column", sm: "row" },
+
         gap: 2,
         justifyContent: "center",
         alignItems: "center",
