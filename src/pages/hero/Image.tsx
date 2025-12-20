@@ -47,10 +47,11 @@ const Image = () => {
       {/* صورة الهاتف */}
       <img
         id="img"
-        src="/mobile.png"
+        src="/about/about3.jpg"
         className=" opacity-0"
         style={{
           height: "400px",
+          borderRadius:"6px",
           width: "200px",
           position: "relative",
           zIndex: 1,

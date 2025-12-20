@@ -1,41 +1,27 @@
 import { Box, Button, Typography } from "@mui/material";
 import { t } from "i18next";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
-import {gsap} from 'gsap'
+import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Content = () => {
-    const context = useContext(LanguageContext);
-  if (!context) throw new Error("LanguageContext must be used within a LanguageProvider");
+  const context = useContext(LanguageContext);
+  if (!context)
+    throw new Error("LanguageContext must be used within a LanguageProvider");
 
-gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollTrigger);
   const { language } = context;
-useEffect(()=>{
-  gsap.to("#content",{
-  x:-300,
-  opacity:0,
-  scrollTrigger:{
-    trigger:"#content",
-    start:"top 40%",
-    end:"bottom 20%",
-    scrub:true
-  }
-})
-},[])
+
   return (
-
-     <div
-
-     id="content"
+    <div
+      id="content"
       style={{
-        width: '100%',
+        width: "100%",
         textAlign: "center",
         marginRight: "auto",
-        position:"relative",
-      
+        position: "relative",
       }}
-
       key={language}
     >
       <Typography
@@ -73,9 +59,11 @@ useEffect(()=>{
         }}
       >
         <Button
+           
           sx={{
             background: "linear-gradient(90deg,#7C4DFF,#586BFF)",
             color: "#fff",
+
             borderRadius: "30px",
             px: { xs: 3, sm: 4 },
             py: 1.4,
@@ -96,15 +84,14 @@ useEffect(()=>{
             py: 1.4,
             textTransform: "none",
             fontWeight: 600,
-            color:"#1E1E1E",
+            color: "#1E1E1E",
             fontSize: { xs: "14px", md: "15px" },
           }}
         >
-         {t("Know More")}
+          {t("Know More")}
         </Button>
       </Box>
     </div>
-
   );
 };
 

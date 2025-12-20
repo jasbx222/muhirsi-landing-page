@@ -30,6 +30,7 @@ const Hero = () => {
   return (
     <>
       <Grid
+      
         container
         sx={{
           backgroundColor: "#6334FC",
@@ -67,7 +68,7 @@ const Hero = () => {
       </Grid>
 
       {/* Decorative Vector */}
-      <Box sx={{ mt: 2, width: "100%" }} display={{ xs: "none", sm: "block" }}>
+      <Box sx={{ mt: 2, width: "100%", }} display={{ xs: "none", sm: "block" }}>
         <Box
         
           sx={{
@@ -77,7 +78,7 @@ const Hero = () => {
             flexDirection: "column",
             alignItems: "center",
             position: "absolute",
-            bottom: "-110px",
+            bottom: "-200px",
             overflow: "hidden",
             zIndex: 2,
           }}

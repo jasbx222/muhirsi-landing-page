@@ -99,7 +99,7 @@ const { t } = useTranslation();
         sx={{ justifyContent: "space-between", px: { xs: 2, sm: 10 }, py: 2 }}
       >
         <Box sx={{ display: "flex", alignItems: "center" }}>
-          <img src="/Logo.png" alt="logo" style={{ width: 180, height: 50 }} />
+          <img src="/wisam.webp" alt="logo" style={{ width: 50, height: 50, borderRadius:"10px" }} />
         </Box>
 
         {isMobile && (
@@ -111,25 +111,20 @@ const { t } = useTranslation();
         {!isMobile && (
           <Box sx={{ display: "flex", alignItems: "center", gap: 3 }}>
             {routes.map((item) => (
-              <NavLink
+              <a
                 key={item.id}
-                to={item.title}
+              href={`#${item.href}`}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 {t(item.title)}
-              </NavLink>
+              </a>
             ))}
           </Box>
         )}
 
         {!isMobile && (
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-            <NavLink
-              to={"/"}
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              {t("Login")}
-            </NavLink>
+           
             <Button
               variant="contained"
               sx={{
@@ -142,7 +137,9 @@ const { t } = useTranslation();
                 "&:hover": { backgroundColor: "#552be3" },
               }}
             >
-              {t("Get Started")}
+              <a href="#getApp">
+                {t("Get App")}
+              </a>
             </Button>
             <Button
               variant="outlined"

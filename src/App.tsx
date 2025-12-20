@@ -1,27 +1,33 @@
-
 import { Box } from "@mui/material";
 import "./App.css";
-// import { Footer } from "./components/footer/Footer";
 import About from "./pages/about/About";
-import FAQ from "./pages/faq/Faq";
 import Future from "./pages/future/Future";
 import GetApp from "./pages/getApp/GetApp";
 import Hero from "./pages/hero/Hero";
-import Testimonials from "./pages/testimonials/Testimonials";
 
 function App() {
   return (
-    <Box sx={{
-       overflow:"hidden",
-    }}>
+    <Box
+      sx={{
+        overflow: "hidden",
+      }}
+    >
+      <Box id="home" sx={{ mb: { xs: 4, md: 8 } }}> 
+        <Hero />
+      </Box>
+
+      <Box id="about" sx={{ mb: { xs: 4, md: 8 } }}>
+        <About />
+      </Box>
+
       
-      <Hero />
-      <About />
-      <Testimonials/>
-      <Future/>
-      <FAQ/>
-      <GetApp/>
-  
+      <Box id="future" sx={{ mb: { xs: 4, md: 8 } }}>
+        <Future />
+      </Box>
+
+      <Box id="getApp" sx={{ mb: { xs: 4, md: 8 } }}>
+        <GetApp />
+      </Box>
     </Box>
   );
 }

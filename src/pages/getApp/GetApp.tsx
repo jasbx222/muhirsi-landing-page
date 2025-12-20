@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { t } from "i18next";
 import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
+import Buttons from "../hero/Buttons";
 
 const GetApp = () => {
   const context = useContext(LanguageContext);
@@ -9,6 +10,12 @@ const GetApp = () => {
     throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
+
+  const images = [
+    "/about/about3.jpg",
+    "/about/about1.jpg",
+    "/about/about2.jpg",
+  ];
 
   return (
     <Box
@@ -26,7 +33,7 @@ const GetApp = () => {
         overflow: "hidden",
       }}
     >
-    
+      {/* نص وعنوان */}
       <Box
         sx={{
           maxWidth: 640,
@@ -69,42 +76,41 @@ const GetApp = () => {
             justifyContent: { xs: "center", md: "flex-start" },
           }}
         >
+          <Buttons />
+        </Box>
+      </Box>
+
+      {/* صور الدرج */}
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: { xs: "1fr", sm: "1fr 1fr", md: "1fr 1fr 1fr" },
+          gap: 3,
+          alignItems: "start",
+        }}
+      >
+        {images.map((src, index) => (
           <Box
+            key={src}
             component="img"
-            src="/getAppFrame.png"
-            alt="Get App Store"
+            src={src}
+            alt={`Get App ${index + 1}`}
             sx={{
-              width: { xs: 140, sm: 160 },
-              cursor: "pointer",
-              transition: "transform 0.3s ease",
+              width: "100%",
+              maxWidth: 420,
+              borderRadius: 2,
+              objectFit: "cover",
+              // جعل بعض الصور أعلى أو أسفل لإعطاء تأثير الدرج
+              mt: index === 1 ? { xs: 0, md: 4 } : 0,
+              mb: index === 2 ? { xs: 0, md: 4 } : 0,
+              boxShadow: "0px 4px 12px rgba(0,0,0,0.1)",
+              transition: "transform 0.3s",
               "&:hover": {
                 transform: "scale(1.05)",
               },
             }}
           />
-        </Box>
-      </Box>
-
-   
-      <Box
-        sx={{
-          width: "100%",
-          maxWidth: 500,
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
-        <Box
-          component="img"
-          src="/getApp.png"
-          alt="Get App"
-          sx={{
-            width: "100%",
-            maxWidth: { xs: 280, sm: 360, md: 420 },
-            height: "auto",
-            objectFit: "contain",
-          }}
-        />
+        ))}
       </Box>
     </Box>
   );

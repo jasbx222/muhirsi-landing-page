@@ -1,56 +1,37 @@
 import { Box, Button } from "@mui/material";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
 import { t } from "i18next";
-import {gsap } from 'gsap'
-import {ScrollTrigger } from 'gsap/ScrollTrigger'
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Title from "./Title";
 export default function Future() {
-  gsap.registerPlugin(ScrollTrigger)
+  gsap.registerPlugin(ScrollTrigger);
   const context = useContext(LanguageContext);
   if (!context)
     throw new Error("LanguageContext must be used within a LanguageProvider");
 
   const { language } = context;
 
-  useEffect(()=>{
-
-    gsap.to("#img-future ",{
-      x:-300,
-      opacity:0,
-      scrollTrigger:{
-        trigger:"#img-future ",
-        start:"top 40%",
-        end:"bottom 20%",
-        scrub:true
-      }
-    })
-    gsap.to("#text-future",{
-      x:300,
-      opacity:0,
-      scrollTrigger:{
-        trigger:"#text-future ",
-        start:"top 40%",
-        end:"bottom 20%",
-        scrub:true
-      }
-    })
-
-   
-  })
+ 
 
   return (
-    <Box
+ <Box >
+  <Title/>
+     <Box
       key={language}
       className="w-full min-h-screen flex items-center justify-center bg-cover bg-center bg-no-repeat py-12"
       style={{
         backgroundImage: `url('/bg-future.png')`,
       }}
     >
+   
       <div className="container mx-auto px-4 sm:px-8 lg:px-20">
         <div className="flex flex-col-reverse lg:flex-row flex-wrap justify-between items-center gap-12 lg:gap-24">
-     
-          <div id='img-future' className="relative w-full sm:w-72 md:w-80 lg:w-96 flex justify-center">
-           
+          <div
+            id="img-future"
+            className="relative w-full sm:w-72 md:w-80 lg:w-96 flex justify-center"
+          >
             <div className="absolute left-1/2 sm:left-[60%] md:left-[230px] -top-12 w-16 sm:w-20 h-16 sm:h-20 opacity-30">
               <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
             </div>
@@ -58,26 +39,41 @@ export default function Future() {
               <img src="/gray-dots.png" alt="dots" className="w-full h-full" />
             </div>
 
-       
             <div
               className="relative rounded-3xl overflow-hidden shadow-2xl"
               style={{ borderRadius: 28 }}
             >
-              <div className="p-4 sm:p-6" style={{ borderRadius: 28 }}>
-                <img
-                  src="/future.png"
-                  alt="phone"
-                  className="w-full h-auto max-w-full object-contain"
+              {["/about/about3.jpg"].map((src, i) => (
+                <Box
+                  key={i}
+                  component="img"
+                  src={src}
+                  alt={`about-${i}`}
+                  sx={{
+                    width: { xs: "80%", sm: "200px", md: "250px" },
+                    maxWidth: 330,
+                    borderRadius: 3,
+                    boxShadow: "0 20px 40px rgba(0,0,0,0.15)",
+                    transform: `rotate(${i * 5 - 5}deg)`,
+                    zIndex: 5,
+                    position: "relative",
+                    transition: "transform 0.3s ease",
+                    "&:hover": {
+                      transform: `rotate(0deg) scale(1.05)`,
+                    },
+                  }}
                 />
-              </div>
+              ))}
             </div>
           </div>
 
-        
-          <div id="text-future" className="flex-1 max-w-xl text-left px-2 sm:px-0">
-             <h1 className="text-xl text-center sm:text-left    sm:text-3xl md:text-4xl lg:text-5xl  font-extrabold leading-tight text-gray-900">
-              {t("Join us at Muhiris, and")} <br />
-              {t("experience the future of social networking and e-commerce today.")}
+          <div
+            id="text-future"
+            className="flex-1 max-w-xl text-left px-2 sm:px-0"
+          >
+            <h1 className="text-xl text-center sm:text-left    lg:text-3xl  font-extrabold leading-tight text-gray-900">
+              {t("future_subtitle")} <br />
+              {t("future_subtitle2")}
             </h1>
 
             <p className="mt-8 text-center sm:text-left relative top-4 text-gray-600 leading-relaxed text-sm sm:text-base">
@@ -104,7 +100,7 @@ export default function Future() {
 
               <Button
                 variant="outlined"
-                   className="w-[200px] sm:w-full"
+                className="w-[200px] sm:w-full"
                 sx={{
                   textTransform: "none",
                   borderRadius: "999px",
@@ -123,5 +119,6 @@ export default function Future() {
         </div>
       </div>
     </Box>
+ </Box>
   );
 }

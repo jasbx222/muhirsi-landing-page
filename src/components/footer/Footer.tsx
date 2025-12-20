@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { t } from "i18next";
 import { useContext } from "react";
 import { LanguageContext } from "../../context/LanguageContext";
@@ -33,9 +33,9 @@ export const Footer = () => {
          
           <Box sx={{ maxWidth: 300 }}>
             <img
-              src="/Logo2.png"
+              src="/wisam.webp"
               alt="logo"
-              style={{ width: "120px", marginBottom: "15px" }}
+              style={{ width: "50px",  height:"50px", marginBottom: "15px" }}
             />
 
             <Typography sx={{ opacity: 0.7, mb: 2, fontSize: "0.9rem" }}>
@@ -57,7 +57,7 @@ export const Footer = () => {
           >
             <Typography sx={{ fontWeight: 600, mb: 1 }}>{t("Pages")}</Typography>
 
-            {["Home", "Services", "About", "Contact Us", "Blog"].map(
+            {["Home", "Future", "About", "get App"].map(
               (item) => (
                 <Typography
                   key={item}
@@ -72,49 +72,7 @@ export const Footer = () => {
               )
             )}
           </Box>
-          <Box sx={{ maxWidth: 300 }}>
-            <Typography sx={{ fontWeight: 600, mb: 2 }}>{t("Newsletter")}</Typography>
-
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column", 
-                gap: 1.5,
-                alignItems: "flex-end", 
-              }}
-            >
-              <TextField
-                variant="filled"
-                fullWidth
-                placeholder="Email address..."
-                sx={{
-                  // backgroundColor: "#fff",
-                  borderRadius: "6px",
-                  color: "#fff",
-                  borderBottom: "2px solid #fff",
-                  boxShadow: "0px",
-                  "& .MuiInputBase-root": {
-                    height: 45,
-                    color: "#fff",
-                  },
-                }}
-              />
-
-              <Button
-                variant="contained"
-                sx={{
-                  backgroundColor: "#157EFD",
-                  px: 4,
-                  borderRadius: "8px",
-                  height: "49px",
-                  width: "79px",
-                  "&:hover": { backgroundColor: "#0d6eda" },
-                }}
-              >
-                {t("Send")}
-              </Button>
-            </Box>
-          </Box>
+         
         </Box>
       </footer>
     </Box>
