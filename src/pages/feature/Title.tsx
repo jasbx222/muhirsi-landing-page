@@ -34,7 +34,7 @@ function Title() {
           width: "fit-content",
         }}
       >
-      {t("Future")}
+      {t("Feature")}
       </Typography>
       <Typography
         sx={{

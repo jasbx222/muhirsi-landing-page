@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import "./App.css";
 import About from "./pages/about/About";
-import Future from "./pages/future/Future";
+import Feature from "./pages/feature/Feature";
 import GetApp from "./pages/getApp/GetApp";
 import Hero from "./pages/hero/Hero";
 
@@ -22,7 +22,7 @@ function App() {
 
       
       <Box id="future" sx={{ mb: { xs: 4, md: 8 } }}>
-        <Future />
+        <Feature />
       </Box>
 
       <Box id="getApp" sx={{ mb: { xs: 4, md: 8 } }}>
