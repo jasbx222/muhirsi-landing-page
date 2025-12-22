@@ -1,7 +1,12 @@
 import { Box } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { gsap } from "gsap";
 const Image = () => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setShow(true);
+  }, []);
   useEffect(() => {
     gsap.to("#img", { opacity: 1, duration: 4 });
     // gsap.from("#img", { x: -200, opacity: 1, duration: 2 });
@@ -44,19 +49,18 @@ const Image = () => {
         }}
       />
 
-      {/* صورة الهاتف */}
-      <img
-        id="img"
-        src="/about/about3.jpg"
-        className=" opacity-0"
-        style={{
-          height: "400px",
-          borderRadius:"6px",
-          width: "200px",
-          position: "relative",
-          zIndex: 1,
-        }}
-      />
+    <img
+      src="/about/about3.jpg"
+      style={{
+        height: "400px",
+        width: "200px",
+        borderRadius: "6px",
+        transition: "all 0.5s ease",
+        opacity: show ? 1 : 0,
+        transform: show ? "scale(1.05)" : "scale(1)",
+      }}
+    />
+
     </Box>
   );
 };

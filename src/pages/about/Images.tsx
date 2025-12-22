@@ -73,6 +73,7 @@ const Images = () => {
       <Box
         sx={{
           position: "absolute",
+          
           bottom: { xs: -45, sm: -55, md: -50 },
           left: { xs: "50%", md: "auto" },
           right: { md: 150 },
@@ -89,7 +90,7 @@ const Images = () => {
           minWidth: { xs: 180, sm: 200 },
         }}
       >
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: "flex" , }}>
           {["user1.png", "user2.png", "user3.png"].map((u, i) => (
             <Box
               key={i}

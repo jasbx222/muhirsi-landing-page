@@ -7,7 +7,7 @@ export const routes=[
 },
     {
     id:2,
-    title:"Future",
+    title:"Feature",
     href:"future"
 
 

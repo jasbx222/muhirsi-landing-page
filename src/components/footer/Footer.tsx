@@ -57,7 +57,7 @@ export const Footer = () => {
           >
             <Typography sx={{ fontWeight: 600, mb: 1 }}>{t("Pages")}</Typography>
 
-            {["Home", "Future", "About", "get App"].map(
+            {["Home", "Feature", "About", "get App"].map(
               (item) => (
                 <Typography
                   key={item}
